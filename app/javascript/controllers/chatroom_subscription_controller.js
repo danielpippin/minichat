@@ -11,7 +11,8 @@ export default class extends Controller {
   connect() {
     console.log('Connecting to the ActionCable channel with id ${this.chatroomIdValue}')
     createConsumer().subscriptions.create(
-      { channel: "ChatroomChannel", id: this.chatroomIdValue }
+      { channel: "ChatroomChannel", id: this.chatroomIdValue },
+      { received: (data) => { console.log(data) } }
     )
   }
 }
